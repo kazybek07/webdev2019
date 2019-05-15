@@ -1,0 +1,33 @@
+
+<h1>Task Lists</h1>
+<div style=" display: inline;  white-space: nowrap;">
+  ADD NEW TASK LIST:
+  <input type="text" [(ngModel)]="name" placeholder="Name"/>
+  <img id="yes" (click)="createList()" (mouseenter)="mouseOn(1)" (mouseleave)="mouseOff(1)"  width="40" style="position: relative; top:10px;">
+</div>
+<br>
+<br>
+<br>
+<div style="display: inline;">
+  <img id="ar1"  width=70px>
+  <div  class="lists" >
+    <div  *ngFor="let t of taskLists" (click)="getTasks(t)" >
+      <li id={{t.name}}> {{t.name}}
+
+        
+      </li>
+      <input class ="update" id="{{t.id}}" type="text" [(ngModel)]="updated_name" style="visibility:hidden;" placeholder="New Name"></div>
+    </div>
+
+  </div>
+  <div style="position: relative;top:-150px;"><ng-container *ngIf="newTask" >
+      <div style=" display: inline;  white-space: nowrap;">
+          ADD NEW TASK:
+          <input type="text" [(ngModel)]="task_name" placeholder="Name"/>
+          <img id="yes2" (click)="createTask()" (mouseenter)="mouseOn(2)" (mouseleave)="mouseOff(2)"  width="40" style="position: relative; top:10px;">
+        </div>
+  </ng-container>
+</div>
+<div class="tasks">
+    <div *ngFor="let t of tasks"><li><p>{{t.name}}</p><p>~{{t.status}}~</p><p>Created at: {{t.created_at}}</p><p>Due on: {{t.due_on}}</p></li></div>
+</div>
